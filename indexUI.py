@@ -3,7 +3,7 @@ from templates.manterClienteUI import ManterClienteUI
 from templates.manterProdutoUI import ManterProdutoUI
 from templates.manterCategoriaUI import ManterCategoriaUI
 from templates.reajustarProdutoUI import ReajustarProduto
-from templates.clienteProduto import ClienteProdutoUI
+from templates.clienteProdutoUI import ClienteProdutoUI
 from templates.abrirContaUI import AbrirContaUI
 from templates.visualizarPedidosUI import VisualizarPedidosUI
 from templates.loginUI import LoginUI

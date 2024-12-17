@@ -1,0 +1,16 @@
+[
+     {
+          "id": 1,
+          "data": "2024-12-17",
+          "carrinho": true,
+          "total": 3600.0,
+          "id_cliente": 2
+     },
+     {
+          "id": 2,
+          "data": "2024-12-17",
+          "carrinho": false,
+          "total": 0,
+          "id_cliente": 2
+     }
+]
