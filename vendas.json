@@ -7,10 +7,24 @@
           "id_cliente": 2
      },
      {
+          "id": 3,
+          "data": "2024-12-18",
+          "carrinho": true,
+          "total": 7700.0,
+          "id_cliente": 3
+     },
+     {
+          "id": 4,
+          "data": "2024-12-18",
+          "carrinho": false,
+          "total": -1100.0,
+          "id_cliente": 3
+     },
+     {
           "id": 2,
           "data": "2024-12-17",
           "carrinho": false,
-          "total": 0,
+          "total": 2750.0,
           "id_cliente": 2
      }
 ]

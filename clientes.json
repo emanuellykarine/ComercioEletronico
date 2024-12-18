@@ -12,5 +12,12 @@
         "email": "emanuelly@gmail.com",
         "fone": "2222222",
         "senha": "1234"
+    },
+    {
+        "id": 3,
+        "nome": "josephy",
+        "email": "josephy@gmail.com",
+        "fone": "84 9999-6666",
+        "senha": "1234"
     }
 ]
