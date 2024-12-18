@@ -1,16 +1,16 @@
 [
      {
-          "id": 2,
-          "descricao": "guarda-roupa",
-          "preco": 2500,
-          "estoque": 9,
-          "id_categoria": 2
-     },
-     {
           "id": 1,
           "descricao": "celular",
           "preco": 1100.0,
-          "estoque": 9,
+          "estoque": 8,
           "id_categoria": 1
+     },
+     {
+          "id": 2,
+          "descricao": "guarda-roupa",
+          "preco": 2750.0,
+          "estoque": 6,
+          "id_categoria": 2
      }
 ]
