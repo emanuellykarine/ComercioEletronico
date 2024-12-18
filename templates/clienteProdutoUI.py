@@ -15,7 +15,7 @@ class ClienteProdutoUI:
             quantidade = st.number_input("Informe a quantidade", value = 0, step = 1)
 
             if st.button("Adicionar produto no carrinho"):
-                if quantidade > produto.get_estoque():
+                if quantidade > produto.get_estoque() or quantidade < 1:
                     st.error("Quantidade acima do disponível")
                 else:
                     for venda in View.venda_listar():
