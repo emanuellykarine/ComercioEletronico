@@ -16,7 +16,7 @@ class ClienteProdutoUI:
 
             if st.button("Adicionar produto no carrinho"):
                 if quantidade > produto.get_estoque() or quantidade < 1:
-                    st.error("Quantidade acima do disponível")
+                    st.error("Quantidade não disponível")
                 else:
                     for venda in View.venda_listar():
                         if venda.get_id_cliente() == st.session_state["cliente_id"] and venda.get_carrinho() == False:
@@ -69,7 +69,7 @@ class ClienteProdutoUI:
 
         venda_itens = View.venda_item_listar()
         for venda_item in venda_itens:
-            if venda_item.get_id_venda() != id_venda:
+            if venda_item.get_id_venda() != id_venda or venda.get_carrinho() == True:
                 venda_itens.remove(venda_item)
         
         if(len(venda_itens) == 0):
@@ -83,7 +83,7 @@ class ClienteProdutoUI:
                     produto_estoque = p.get_estoque()
                     produto_categoria = p.get_id_categoria()
             if st.button("Atualizar"):
-                if quantidade > produto_estoque:
+                if quantidade < 1 or quantidade > produto_estoque:
                     st.error("Quantidade indisponível")
                 elif quantidade > item.get_qtd():
                     quantidade = quantidade - item.get_qtd()
