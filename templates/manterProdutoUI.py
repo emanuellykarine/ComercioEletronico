@@ -22,7 +22,7 @@ class ManterProdutoUI:
     @classmethod 
     def produto_inserir(cls):
         descricao = st.text_input("Informe a descricao")
-        preco = st.number_input("Informe o preço", value = 0, step = 1)
+        preco = st.number_input("Informe o preço", value = 0.0, step = 1.0)
         estoque = st.number_input("Informe a quantidade no estoque", value = 0, step = 1)
         categorias = View.categoria_listar()
         if len(categorias) == 0:
@@ -75,7 +75,7 @@ class ManterProdutoUI:
             selecionado = st.selectbox("Atualização de produtos", produtos)
 
             descricao = st.text_input("Informe a nova descricao", selecionado.get_descricao())
-            preco = st.number_input("Informe o preço", value = selecionado.get_preco(), step = 1)
+            preco = st.number_input("Informe o preço", value = selecionado.get_preco(), step = 1.0)
             estoque = st.number_input("Informe a nova quantidade no estoque", value = selecionado.get_estoque(), step = 1)
             categoria = st.text_input("Informe a nova categoria", selecionado.get_descricao())
 
