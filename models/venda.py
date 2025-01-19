@@ -1,5 +1,6 @@
 import json
 from datetime import date
+from models.modelo import Modelo
 
 class Venda:
     def __init__(self, id, data, carrinho, total, id_cliente):
@@ -55,50 +56,7 @@ class Venda:
             "id_cliente": self.get_id_cliente()
         }
     
-class Vendas:
-    objetos = []
-
-    @classmethod
-    def inserir(cls, obj):
-        cls.abrir()
-        
-        #calcular o id do objeto
-        id = 0
-        for venda in cls.objetos:
-            if venda.get_id() > id: id = venda.get_id()
-        obj.set_id(id + 1)
-
-        cls.objetos.append(obj)
-        cls.salvar()
-
-    @classmethod
-    def listar(cls):
-        cls.abrir()
-        return cls.objetos
-    
-    @classmethod
-    def listar_id(cls, id):
-        cls.abrir()
-        # percorre a lista procurando o id    
-        for venda in cls.objetos:
-            if venda.get_id() == id: return venda
-        return None
-
-    @classmethod
-    def atualizar(cls, obj):
-        venda = cls.listar_id(obj.get_id())
-        if venda != None:
-            cls.objetos.remove(venda)
-            cls.objetos.append(obj)
-            cls.salvar()
-
-    @classmethod
-    def excluir(cls, obj):
-        venda = cls.listar_id(obj.get_id())
-        if venda != None:
-            cls.objetos.remove(venda)
-            cls.salvar()
-
+class Vendas(Modelo):
     @classmethod
     def salvar(cls):
         with open("vendas.json", mode="w") as arquivo:

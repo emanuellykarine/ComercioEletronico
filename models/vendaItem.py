@@ -1,4 +1,5 @@
 import json
+from models.modelo import Modelo
 
 class Venda_item:
     def __init__(self, id, q, p, id_venda, id_produto):
@@ -50,50 +51,7 @@ class Venda_item:
             "id_produto": self.get_id_produto()
     }
 
-class Venda_itens:
-    objetos = []
-
-    @classmethod
-    def inserir(cls, obj):
-        cls.abrir()
-        
-        #calcular o id do objeto
-        id = 0
-        for venda_item in cls.objetos:
-            if venda_item.get_id() > id: id = venda_item.get_id()
-        obj.set_id(id + 1)
-
-        cls.objetos.append(obj)
-        cls.salvar()
-
-    @classmethod
-    def listar(cls):
-        cls.abrir()
-        return cls.objetos
-    
-    @classmethod
-    def listar_id(cls, id):
-        cls.abrir()
-        # percorre a lista procurando o id    
-        for venda_item in cls.objetos:
-            if venda_item.get_id() == id: return venda_item
-        return None
-
-    @classmethod
-    def atualizar(cls, obj):
-        venda_item = cls.listar_id(obj.get_id())
-        if venda_item != None:
-            cls.objetos.remove(venda_item)
-            cls.objetos.append(obj)
-            cls.salvar()
-
-    @classmethod
-    def excluir(cls, obj):
-        venda_item = cls.listar_id(obj.get_id())
-        if venda_item != None:
-            cls.objetos.remove(venda_item)
-            cls.salvar()
-
+class Venda_itens(Modelo):
     @classmethod
     def salvar(cls):
         with open("venda_itens.json", mode="w") as arquivo:

@@ -1,4 +1,5 @@
 import json
+from models.modelo import Modelo
 
 class Categoria:
     def __init__(self, id, d):
@@ -25,48 +26,7 @@ class Categoria:
             "id": self.get_id(), "descricao": self.get_descricao()
         }
     
-class Categorias:
-    objetos = [] # atributo de classe
-
-    @classmethod
-    def inserir(cls, obj):
-        cls.abrir()
-        
-        id = 0
-        for x in cls.objetos:
-            if x.get_id() > id: id = x.get_id()
-        obj.set_id(id + 1)    
-
-        cls.objetos.append(obj)
-        cls.salvar()
-
-    @classmethod
-    def listar(cls):
-        cls.abrir()
-        return cls.objetos
-    
-    @classmethod
-    def listar_id(cls, id):
-        cls.abrir()
-        for x in cls.objetos:
-            if x.get_id() == id: return x
-        return None
-    
-    @classmethod
-    def atualizar(cls, obj):
-        x = cls.listar_id(obj.get_id())
-        if x != None:
-            cls.objetos.remove(x)
-            cls.objetos.append(obj)
-            cls.salvar()    
-
-    @classmethod
-    def excluir(cls, obj):
-        x = cls.listar_id(obj.get_id())
-        if x != None:
-            cls.objetos.remove(x)
-            cls.salvar()     
-
+class Categorias(Modelo):     
     @classmethod
     def salvar(cls):
         with open("categorias.json", mode="w") as arquivo:
