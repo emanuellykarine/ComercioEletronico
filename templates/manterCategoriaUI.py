@@ -24,10 +24,14 @@ class ManterCategoriaUI:
         descricao = st.text_input("Informe a descricao da categoria")
 
         if st.button("Inserir"):
-            View.categoria_inserir(descricao)
-            st.success("Categoria adicionada")
-            time.sleep(2)
-            st.rerun()
+            try:
+                View.categoria_inserir(descricao)
+                st.success("Categoria adicionada")
+                time.sleep(2)
+                st.rerun()
+            except Exception as erro:
+                st.error(erro)
+            
 
     @classmethod 
     def categoria_listar(cls):
@@ -55,10 +59,14 @@ class ManterCategoriaUI:
             descricao = st.text_input("Informe a nova descrição", selecionado.get_descricao())
 
             if st.button("Atualizar"):
-                View.categoria_atualizar(selecionado.get_id(), descricao)
-                st.success("Categoria atualizada")
-                time.sleep(2)
-                st.rerun()
+                try:
+                    View.categoria_atualizar(selecionado.get_id(), descricao)
+                    st.success("Categoria atualizada")
+                    time.sleep(2)
+                    st.rerun()
+                except Exception as erro:
+                    st.error(erro)
+                
 
     @classmethod 
     def categoria_excluir(cls):

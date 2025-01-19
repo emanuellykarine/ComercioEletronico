@@ -14,7 +14,11 @@ class ReajustarProduto:
             porcentagem = st.number_input("Informe a porcentagem em decimal", value = 0.0, step = 0.01)
 
             if st.button("Reajustar"):
-                View.produto_reajustar(porcentagem, selecionado.get_id())
-                st.success("Produto com valor reajustado")
-                time.sleep(2)
-                st.rerun()
+                try:
+                    View.produto_reajustar(porcentagem, selecionado.get_id())
+                    st.success("Produto com valor reajustado")
+                    time.sleep(2)
+                    st.rerun()
+                except Exception as erro:
+                    st.error(erro)
+                

@@ -27,10 +27,14 @@ class ManterClienteUI:
         senha = st.text_input("Informe a senha", type="password")
 
         if st.button("Inserir"):
-            View.cliente_inserir(nome, email, fone, senha)
-            st.success("Cliente adicionado")
-            time.sleep(2)
-            st.rerun()
+            try:
+                View.cliente_inserir(nome, email, fone, senha)
+                st.success("Cliente adicionado")
+                time.sleep(2)
+                st.rerun()
+            except Exception as erro:
+                st.error(erro)
+            
 
     @classmethod 
     def cliente_listar(cls):
@@ -64,10 +68,15 @@ class ManterClienteUI:
             senha = st.text_input("Informe a nova senha", selecionado.get_senha(), type="password")
             
             if st.button("Atualizar"):
-                View.cliente_atualizar(selecionado.get_id(), nome, email, fone, senha)
-                st.success("Cliente atualizado")
-                time.sleep(2)
-                st.rerun()
+                try:
+                    View.cliente_atualizar(selecionado.get_id(), nome, email, fone, senha)
+                    st.success("Cliente atualizado")
+                    time.sleep(2)
+                    st.rerun()
+                except Exception as erro:
+                    st.error(erro)
+                
+
 
     @classmethod 
     def cliente_excluir(cls):
