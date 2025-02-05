@@ -9,8 +9,8 @@ class Modelo(ABC):
         
         #calcular o id do objeto
         id = 0
-        for produto in cls.objetos:
-            if produto.get_id() > id: id = produto.get_id()
+        for objeto in cls.objetos:
+            if objeto.get_id() > id: id = objeto.get_id()
         obj.set_id(id + 1)
 
         cls.objetos.append(obj)
@@ -25,23 +25,23 @@ class Modelo(ABC):
     def listar_id(cls, id):
         cls.abrir()
         # percorre a lista procurando o id    
-        for produto in cls.objetos:
-            if produto.get_id() == id: return produto
+        for objeto in cls.objetos:
+            if objeto.get_id() == id: return objeto
         return None
 
     @classmethod
     def atualizar(cls, obj):
-        produto = cls.listar_id(obj.get_id())
-        if produto != None:
-            cls.objetos.remove(produto)
+        objeto = cls.listar_id(obj.get_id())
+        if objeto != None:
+            cls.objetos.remove(objeto)
             cls.objetos.append(obj)
             cls.salvar()
 
     @classmethod
     def excluir(cls, obj):
-        produto = cls.listar_id(obj.get_id())
-        if produto != None:
-            cls.objetos.remove(produto)
+        objeto = cls.listar_id(obj.get_id())
+        if objeto != None:
+            cls.objetos.remove(objeto)
             cls.salvar()
 
     @classmethod
